@@ -92,12 +92,12 @@ resultt=(db.session.query(Actor,Object).filter(Actor.actorname==Query[0]).filter
 The result variable along with its length is rendered to another html page - “input.html”.
 In this page, for every result entry, Frame number, Actor name,  Emotion and Object recognized is shown along with a static image.
 
-
-
  5) train_on_actors.py :
     This is the Face recognition model training utility program.
 Go to the path -   src → knn_examples → train
-Create a folder with the name of the Class Name and paste the nrew 
+Create a folder with the name of the Class Name and paste the new training images in that folder. If the Class does not exist then make a new directory with the name of the Class and paste the training images in that folder.
+Now run the python file train_on_actors.py and the training will start and the details will be shown on the CMI. The new model file can be changing the name in the python script. 
+
 
     
 
