@@ -1,0 +1,120 @@
+<HTML>
+<head>
+</head>
+
+<body >
+<h1> RESULT : total no of frames({{length}})</h1>
+<!-- <form action="#">
+ Input number: <input type="text" name="lname" id="userinput" style="margin-top: 20px; margin-bottom: 20px; margin-left: 20px;"><br>
+  <input type="button" value="Show" onclick="add()" style="margin-left: 20px;">
+</form> -->
+
+<p id="par"></p>
+<script type="text/JavaScript">
+
+	var prev=0;
+
+	function remove()
+	{
+
+			// remove previous divs
+			
+			for (i = 0; i < prev; i++) 
+			{ 
+				var remDiv = document.getElementById('block');
+			    remDiv.parentNode.removeChild(remDiv);
+			}
+	}
+
+	function add()
+	{
+		var TEXT = ["This is first div, and some text", "This is a video for GRE results","This is a time lapse of clouds","Results for other random videos","Just some fun DIY!"];
+		var text = "";
+		// var val = document.getElementById("userinput").value;
+		var val ={{length}}
+		remove();
+
+
+		//normal numnber printing
+
+/*		if(val=="")
+				document.getElementById("par").innerHTML = "Empty";	
+		else
+		{
+
+			for (i = 1; i <= val; i++) 
+			{ 
+				    text += i + "<br>";
+			}
+			document.getElementById("par").innerHTML = text;	
+		}
+*/	
+		
+		//div printing
+		if(val==0)
+				document.getElementById("par").innerHTML = "Empty";	
+		else
+		{
+			// for (i = 0; i < val; i++) 
+			{% for res in resultt: %}
+			// { 
+
+				//outer div
+				var newDiv = document.createElement('div');
+				newDiv.id = 'block';
+				newDiv.className = 'block';
+
+				document.getElementsByTagName('body')[0].appendChild(newDiv);
+				newDiv.style.width = "450px"; 
+				newDiv.style.height = "120px"; 
+		//		newDiv.style.background = "#77a4d4"; 
+		//		newDiv.style.borderStyle = "solid"; 
+		//		newDiv.style.borderWidth = "1px";
+				newDiv.style.margin = "10px";
+
+
+				//inner div 1 for videos
+
+				var inDiv = document.createElement('div');
+				inDiv.id = 'inblock1';
+				inDiv.className = 'inblock1';
+
+				document.getElementById('block').appendChild(inDiv);
+				inDiv.style.width = "200px"; 
+				inDiv.style.height = "100px"; 
+				inDiv.style.background = "#77a4c5"; 
+				inDiv.style.borderStyle = "solid"; 
+				inDiv.style.borderWidth = "1px";
+				inDiv.style.margin = "10px";
+				inDiv.style.float = "left";
+
+				//inner div 2 for text
+
+				var inDiv = document.createElement('div');
+				inDiv.id = 'inblock2';
+				inDiv.className = 'inblock2';
+
+				document.getElementById('block').appendChild(inDiv);
+				inDiv.style.width = "200px"; 
+				inDiv.style.height = "100px"; 
+		//		inDiv.style.background = "#77a4d4"; 
+				inDiv.style.borderStyle = "solid"; 
+				inDiv.style.borderWidth = "1px";
+				inDiv.style.borderColor = "white";
+				inDiv.style.margin = "10px";
+				inDiv.style.float = "right";
+				// inDiv.innerHTML = TEXT[i];
+				// var xx="";
+				// xx += {{res.Actor.emotionname}};
+				inDiv.innerHTML = "Frame no: {{res.Actor.frameno}} \n Actor: {{res.Actor.actorname}} \n Emotion: {{res.Actor.emotionname}} \n Object: {{res.Object.objectname}} ";
+				//inDiv.innerHTML =  {{res.Actor.frameno}};
+			{% endfor %}
+			// }
+		}
+		prev = val;
+	}
+	window.onload=add;
+</script>
+
+</body>
+</HTML>
